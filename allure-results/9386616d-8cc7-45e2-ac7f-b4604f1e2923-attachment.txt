@@ -1,0 +1,3 @@
+{
+  "text": "duckyakcra@example.com"
+}
