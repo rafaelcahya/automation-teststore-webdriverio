@@ -20,7 +20,7 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: ["./test/specs/*.spec.js"],
+    specs: ["./test/specs/**/*.spec.js"],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -58,10 +58,6 @@ export const config = {
         {
             // capabilities for local browser web tests
             browserName: "chrome", // or "firefox", "microsoftedge", "safari"
-        },
-        {
-            // capabilities for local browser web tests
-            browserName: "firefox", // or "firefox", "microsoftedge", "safari"
         },
     ],
 

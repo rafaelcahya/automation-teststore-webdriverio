@@ -31,9 +31,14 @@ function generatePassword() {
     return randomName;
 }
 
+function generateNumber() {
+    return Math.floor(Math.random() * 50) + 1;
+}
+
 export default {
     generateUniqueName,
     generatePhonenumber,
     generateZipCode,
     generatePassword,
+    generateNumber,
 };

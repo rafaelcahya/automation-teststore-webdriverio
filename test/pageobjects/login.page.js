@@ -8,8 +8,33 @@ class LoginPage extends Page {
     /**
      * define selectors using getter methods
      */
+
+    get loginName() {
+        return $("#loginFrm_loginname");
+    }
+
+    get password() {
+        return $("#loginFrm_password");
+    }
+
+    get alertErrorMsg() {
+        return $(".alert-error");
+    }
+
+    get loginBtn(){
+        return $('button[title="Login"]')
+    }
+
     get continueBtn() {
         return $('button[title="Continue"]');
+    }
+
+    async login(loginName, password) {
+        await this.loginName.waitForDisplayed();
+        await this.loginName.setValue(loginName);
+        await this.password.waitForDisplayed();
+        await this.password.setValue(password);
+        await this.loginBtn.click();
     }
 
     /**

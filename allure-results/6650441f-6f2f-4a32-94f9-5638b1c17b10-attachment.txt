@@ -1,3 +1,0 @@
-{
-  "text": "snipewhale@example.com"
-}
