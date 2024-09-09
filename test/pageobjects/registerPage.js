@@ -78,6 +78,10 @@ class SecurePage extends Page {
         return $("#AccountFrm_zone_id");
     }
 
+    get regionLabelOption() {
+        return $$("#AccountFrm_zone_id option");
+    }
+
     get emptyRegionMsg() {
         return $("//span[contains(text(), 'Please select a region / state!')]");
     }
@@ -94,6 +98,10 @@ class SecurePage extends Page {
 
     get country() {
         return $("#AccountFrm_country_id");
+    }
+
+    get countryLabelOptions() {
+        return $$("#AccountFrm_country_id option");
     }
 
     get emptyCountryMsg() {

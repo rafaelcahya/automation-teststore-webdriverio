@@ -27,9 +27,15 @@ export const config = {
     ],
     suites: {
         e2e: [
-            "test/specs/loginPage.spec.js",
             "test/specs/navbar.spec.js",
-            "test/specs/registerPage.spec.js",
+            "test/specs/authentication/loginPage.spec.js",
+            "test/specs/authentication/registerPage.spec.js",
+            "test/specs/checkoutConfirmation/checkoutConfirmation.spec.js",
+            "test/specs/productPage/filterProductPage.spec.js",
+            "test/specs/productPage/productDetails.spec.js",
+            "test/specs/productPage/thumbnailProduct.spec.js",
+            "test/specs/productPage/viewProductPage.spec.js",
+            "test/specs/shoppingCart/cartList.spec.js",
         ],
     },
     //

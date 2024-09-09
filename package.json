@@ -11,7 +11,7 @@
     },
     "scripts": {
         "wdio": "wdio run ./wdio.conf.js",
-        "regression-production": "npx wdio --spec test/specs/loginPage.spec.js",
+        "regression-production": "npx wdio --spec test/specs/**/*.spec.js",
         "smoke-e2e": "npx wdio --suite e2e"
     },
     "dependencies": {

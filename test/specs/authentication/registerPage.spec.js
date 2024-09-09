@@ -139,9 +139,26 @@ describe("Register page", () => {
     });
 
     it("Should be able to select region dropdown", async () => {
-        await registerPage.region.waitForDisplayed();
+        await registerPage.region.waitForClickable();
         await registerPage.region.click();
-        await registerPage.region.selectByVisibleText("Anglesey");
+        await browser.waitUntil(
+            async () => {
+                const options = await registerPage.regionLabelOption;
+                return options.length > 0;
+            },
+            {
+                timeout: 5000,
+                timeoutMsg: "Region options were not loaded in time",
+            }
+        );
+        const regionOptions = await registerPage.regionLabelOption;
+        const numberOfRegion = regionOptions.length;
+        await expect(numberOfRegion).toBeGreaterThan(0);
+        const randomRegionIndex = Math.floor(Math.random() * numberOfRegion);
+        const randomRegionOption = regionOptions[randomRegionIndex];
+        await randomRegionOption.click();
+        const regionValue = await randomRegionOption.getValue();
+        await expect(registerPage.region).toHaveValue(regionValue);
     });
 
     it("Should be able to show message when region is empty", async () => {
@@ -176,9 +193,24 @@ describe("Register page", () => {
     it("Should be able to choose country", async () => {
         await registerPage.country.waitForDisplayed();
         await registerPage.country.click();
-        await registerPage.country.selectByVisibleText("Afghanistan");
-        const countryValue = await registerPage.country.getValue();
-        await expect(countryValue).toBe("1");
+        await browser.waitUntil(
+            async () => {
+                const options = await registerPage.countryLabelOptions;
+                return options.length > 0;
+            },
+            {
+                timeout: 5000,
+                timeoutMsg: "Region options were not loaded in time",
+            }
+        );
+        const countryOptions = await registerPage.countryLabelOptions;
+        const numberOfCountry = countryOptions.length;
+        await expect(numberOfCountry).toBeGreaterThan(0);
+        const randomCountryIndex = Math.floor(Math.random() * numberOfCountry);
+        const randomCountryOption = countryOptions[randomCountryIndex];
+        await randomCountryOption.click();
+        const countryValue = await randomCountryOption.getValue();
+        await expect(registerPage.country).toHaveValue(countryValue);
     });
 
     it("Should be able to show message when country is not selected", async () => {
@@ -210,11 +242,11 @@ describe("Register page", () => {
 
     it("Should be able to show message when loginname is dupilicate", async () => {
         await registerPage.loginName.waitForDisplayed();
-        await registerPage.loginName.setValue("Abigail24")
-        await registerPage.continueBtn.waitForClickable()
-        await registerPage.continueBtn.click()
-        await expect(registerPage.duplicateLoginNameMsg).toBeDisplayed()
-    })
+        await registerPage.loginName.setValue("Abigail24");
+        await registerPage.continueBtn.waitForClickable();
+        await registerPage.continueBtn.click();
+        await expect(registerPage.duplicateLoginNameMsg).toBeDisplayed();
+    });
 
     it("Should be able to fill password", async () => {
         await registerPage.password.waitForDisplayed();
@@ -281,7 +313,7 @@ describe("Register page", () => {
     });
 
     it("Should be able to show alert message if password and confirm password are not same", async () => {
-        const value = generator.generateUniqueName()
+        const value = generator.generateUniqueName();
         await registerPage.firstName.waitForDisplayed();
         await registerPage.firstName.setValue(value);
         await registerPage.lastName.waitForDisplayed();
@@ -324,7 +356,7 @@ describe("Register page", () => {
     });
 
     it("Should be able to show message is privacy policy is not selected", async () => {
-        const value = generator.generateUniqueName()
+        const value = generator.generateUniqueName();
         await registerPage.firstName.waitForDisplayed();
         await registerPage.firstName.setValue(value);
         await registerPage.lastName.waitForDisplayed();
@@ -364,7 +396,7 @@ describe("Register page", () => {
     });
 
     it("Should be able to register account", async () => {
-        const value = generator.generateUniqueName()
+        const value = generator.generateUniqueName();
         await registerPage.firstName.waitForDisplayed();
         await registerPage.firstName.setValue(value);
         await registerPage.lastName.waitForDisplayed();

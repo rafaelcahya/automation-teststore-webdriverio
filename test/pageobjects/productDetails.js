@@ -46,7 +46,7 @@ class productDetails {
         return $(".cart");
     }
 
-    get addToWishlist() {
+    get addToWishlistBtn() {
         return $(".wishlist_add");
     }
 

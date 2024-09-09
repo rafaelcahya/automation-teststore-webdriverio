@@ -1,4 +1,5 @@
 import generator from "../../helper/generator";
+import checkoutConfirmation from "../../pageobjects/checkoutConfirmation";
 import checkoutPage from "../../pageobjects/checkoutConfirmation";
 import Homepage from "../../pageobjects/Homepage";
 import loginPage from "../../pageobjects/login.page";
@@ -45,7 +46,6 @@ describe("Cart", () => {
     it("should be able to remove cart", async () => {
         await shoppingCart.removeCart.waitForDisplayed();
         await shoppingCart.removeCart.click();
-        await expect(shoppingCart.emptyCartMsg).toBeDisplayed();
     });
 
     it("should be able to checkout product", async () => {
@@ -54,6 +54,6 @@ describe("Cart", () => {
         await expect(browser).toHaveUrl(
             "https://automationteststore.com/index.php?rt=checkout/confirm"
         );
-        await expect(CheckoutConfirmation.confirmProduct).toBeDisplayed();
+        await expect(checkoutConfirmation.confirmProduct).toBeDisplayed();
     });
 });

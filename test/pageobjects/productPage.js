@@ -26,7 +26,7 @@ class ProductPage {
     }
 
     get thumbnailProduct() {
-        return $$(".thumbnail");
+        return $(".thumbnail");
     }
 
     get shortlinkProduct() {

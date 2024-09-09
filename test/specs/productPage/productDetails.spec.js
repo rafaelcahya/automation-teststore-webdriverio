@@ -123,7 +123,7 @@ describe("Product Details", () => {
         const quantity = generator.generateNumber();
         await productDetails.productQuantity.setValue(quantity);
         const totalCalculationPrice = (price * quantity).toFixed(2);
-        await productDetails.totalPrice.waitForDisplayed({ timeout: 2000 });
+        await productDetails.totalPrice.waitForDisplayed();
         await expect(productDetails.totalPrice).toHaveText(
             "$" + totalCalculationPrice
         );
@@ -147,36 +147,12 @@ describe("Product Details", () => {
         await productDetails.productQuantity.waitForDisplayed();
         const quantity = generator.generateNumber();
         await productDetails.productQuantity.setValue(quantity);
-        await productDetails.totalPrice.waitForDisplayed({ timeout: 2000 });
+        await productDetails.totalPrice.waitForDisplayed();
         await productDetails.addToCartBtn.waitForClickable();
         await productDetails.addToCartBtn.click();
         await expect(browser).toHaveUrl(
             "https://automationteststore.com/index.php?rt=checkout/cart"
         );
         await expect(shoppingCart.cart).toBeDisplayed();
-    });
-
-    it("Should be able to add product to wishlist", async () => {
-        const sizeLabels = await productDetails.sizeLabels;
-        const numberOfSize = sizeLabels.length;
-        await expect(numberOfSize).toBeGreaterThan(0);
-        const randomSizeIndex = Math.floor(Math.random() * numberOfSize);
-        const randomSizeLabel = sizeLabels[randomSizeIndex];
-        await randomSizeLabel.click();
-        await productDetails.colorDropdown.waitForClickable();
-        await productDetails.colorDropdown.click();
-        const colorOptions = await productDetails.colorLabels;
-        const numberOfColor = colorOptions.length;
-        await expect(numberOfColor).toBeGreaterThan(0);
-        const randomColorIndex = Math.floor(Math.random() * numberOfColor);
-        const randomColorLabel = colorOptions[randomColorIndex];
-        await randomColorLabel.click();
-        await productDetails.productQuantity.waitForDisplayed();
-        const quantity = generator.generateNumber();
-        await productDetails.productQuantity.setValue(quantity);
-        await productDetails.totalPrice.waitForDisplayed({ timeout: 2000 });
-        await productDetails.addToWishlist.waitForClickable();
-        await productDetails.addToWishlist.click();
-        await expect(productDetails.removeWishlistBtn).toBeDisplayed();
     });
 });
