@@ -16,10 +16,11 @@ describe("Login page", async () => {
         await browser.refresh();
     });
 
-    it("Should be able to fill the login name", async () => {
+    it.only("Should be able to fill the login name", async () => {
         const loginNameValue = generator.generateUniqueName();
         await loginPage.loginName.waitForDisplayed();
         await loginPage.loginName.setValue(loginNameValue);
+        await browser.pause(3000)
         await expect(loginPage.loginName).toHaveValue(loginNameValue);
     });
 

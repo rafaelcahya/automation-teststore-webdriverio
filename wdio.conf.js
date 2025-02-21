@@ -1,3 +1,5 @@
+const browserName = process.env.BROWSER || 'chrome';
+
 export const config = {
     //
     // ====================
@@ -20,12 +22,16 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: ["./test/specs/**/*.spec.js"],
+    specs: ["./test/specs/authentication/loginPage.spec.js"],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
     suites: {
+        login:["test/specs/authentication/loginPage.spec.js",],
+        register:["test/specs/authentication/loginPage.spec.js",],
+        product:["test/specs/authentication/loginPage.spec.js",],
+        cart:["test/specs/authentication/loginPage.spec.js",],
         e2e: [
             "test/specs/navbar.spec.js",
             "test/specs/authentication/loginPage.spec.js",
@@ -63,7 +69,7 @@ export const config = {
     capabilities: [
         {
             // capabilities for local browser web tests
-            browserName: "chrome", // or "firefox", "microsoftedge", "safari"
+            browserName: browserName, // or "firefox", "microsoftedge", "safari"
         },
     ],
 

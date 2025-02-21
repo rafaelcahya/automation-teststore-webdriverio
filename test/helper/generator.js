@@ -16,7 +16,7 @@ function generateUniqueName() {
 }
 
 function generatePhonenumber() {
-    return parseInt(Math.random().toFixed(10).replace("0.", ""));
+    return parseInt(Math.random().toFixed(6).replace("0.", ""));
 }
 
 function generateZipCode() {
