@@ -1,4 +1,4 @@
-const browserName = process.env.BROWSER || 'chrome';
+const browserName = process.env.BROWSER || 'firefox';
 
 export const config = {
     //
@@ -22,16 +22,16 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: ["./test/specs/authentication/loginPage.spec.js"],
+    //specs: ["./test/specs/authentication/loginPage.spec.js"],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
     suites: {
-        login:["test/specs/authentication/loginPage.spec.js",],
-        register:["test/specs/authentication/loginPage.spec.js",],
-        product:["test/specs/authentication/loginPage.spec.js",],
-        cart:["test/specs/authentication/loginPage.spec.js",],
+        login: ["test/specs/authentication/loginPage.spec.js"],
+        register: ["test/specs/authentication/loginPage.spec.js"],
+        product: ["test/specs/authentication/loginPage.spec.js"],
+        cart: ["test/specs/authentication/loginPage.spec.js"],
         e2e: [
             "test/specs/navbar.spec.js",
             "test/specs/authentication/loginPage.spec.js",
@@ -68,8 +68,17 @@ export const config = {
     //
     capabilities: [
         {
-            // capabilities for local browser web tests
-            browserName: browserName, // or "firefox", "microsoftedge", "safari"
+            // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+            // grid with only 5 firefox instances available you can make sure that not more than
+            // 5 instances get started at a time.
+            maxInstances: 2,
+            //
+            browserName: browserName,
+            acceptInsecureCerts: true,
+            // If outputDir is provided WebdriverIO can capture driver session logs
+            // it is possible to configure which logTypes to include/exclude.
+            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+            // excludeDriverLogs: ['bugreport', 'server'],
         },
     ],
 
@@ -120,7 +129,7 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+    // services: ['chromedriver', 'geckodriver'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -132,7 +141,7 @@ export const config = {
 
     //
     // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
+    specFileRetries: 0,
     //
     // Delay in seconds between the spec file retry attempts
     // specFileRetriesDelay: 0,

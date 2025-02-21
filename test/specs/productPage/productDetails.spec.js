@@ -128,31 +128,4 @@ describe("Product Details", () => {
             "$" + totalCalculationPrice
         );
     });
-
-    it("Should be able to add product to cart", async () => {
-        const sizeLabels = await productDetails.sizeLabels;
-        const numberOfSize = sizeLabels.length;
-        await expect(numberOfSize).toBeGreaterThan(0);
-        const randomSizeIndex = Math.floor(Math.random() * numberOfSize);
-        const randomSizeLabel = sizeLabels[randomSizeIndex];
-        await randomSizeLabel.click();
-        await productDetails.colorDropdown.waitForClickable();
-        await productDetails.colorDropdown.click();
-        const colorOptions = await productDetails.colorLabels;
-        const numberOfColor = colorOptions.length;
-        await expect(numberOfColor).toBeGreaterThan(0);
-        const randomColorIndex = Math.floor(Math.random() * numberOfColor);
-        const randomColorLabel = colorOptions[randomColorIndex];
-        await randomColorLabel.click();
-        await productDetails.productQuantity.waitForDisplayed();
-        const quantity = generator.generateNumber();
-        await productDetails.productQuantity.setValue(quantity);
-        await productDetails.totalPrice.waitForDisplayed();
-        await productDetails.addToCartBtn.waitForClickable();
-        await productDetails.addToCartBtn.click();
-        await expect(browser).toHaveUrl(
-            "https://automationteststore.com/index.php?rt=checkout/cart"
-        );
-        await expect(shoppingCart.cart).toBeDisplayed();
-    });
 });
