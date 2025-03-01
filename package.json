@@ -9,7 +9,7 @@
         "@wdio/selenium-standalone-service": "^8.15.0",
         "@wdio/spec-reporter": "^9.0.8",
         "@wdio/visual-service": "^6.0.0",
-        "wdio-chromedriver-service": "^8.1.1",
+        "wdio-chromedriver-service": "^8.0.0-alpha.1",
         "wdio-geckodriver-service": "^5.0.2"
     },
     "scripts": {
