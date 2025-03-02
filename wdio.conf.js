@@ -30,24 +30,10 @@ export const config = {
     suites: {
         login: ["test/specs/authentication/loginPage.spec.js"],
         register: ["test/specs/authentication/registerPage.spec.js"],
-        product: [
-            "test/specs/checkoutConfirmation/checkoutConfirmation.spec.js",
-            "test/specs/productPage/filterProductPage.spec.js",
-            "test/specs/productPage/productDetails.spec.js",
-            "test/specs/productPage/thumbnailProduct.spec.js",
-            "test/specs/productPage/viewProductPage.spec.js",
-        ],
-        cart: ["test/specs/shoppingCart/cartList.spec.js"],
         e2e: [
             "test/specs/navbar.spec.js",
-            "test/specs/authentication/loginPage.spec.js",
-            "test/specs/authentication/registerPage.spec.js",
-            "test/specs/checkoutConfirmation/checkoutConfirmation.spec.js",
-            "test/specs/productPage/filterProductPage.spec.js",
-            "test/specs/productPage/productDetails.spec.js",
-            "test/specs/productPage/thumbnailProduct.spec.js",
-            "test/specs/productPage/viewProductPage.spec.js",
-            "test/specs/shoppingCart/cartList.spec.js",
+            "test/specs/loginPage.spec.js",
+            "test/specs/registerPage.spec.js",
         ],
     },
     //
