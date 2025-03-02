@@ -28,8 +28,8 @@ export const config = {
         // 'path/to/excluded/files'
     ],
     suites: {
-        login: ["test/specs/authentication/loginPage.spec.js"],
-        register: ["test/specs/authentication/registerPage.spec.js"],
+        login: ["test/specs/loginPage.spec.js"],
+        register: ["test/specs/registerPage.spec.js"],
         e2e: [
             "test/specs/navbar.spec.js",
             "test/specs/loginPage.spec.js",
