@@ -1,7 +1,7 @@
-import generator from "../../helper/generator";
-import Homepage from "../../pageobjects/Homepage";
-import loginPage from "../../pageobjects/login.page";
-import navbar from "../../pageobjects/navbar";
+import generator from "../helper/generator";
+import Homepage from "../pageobjects/Homepage";
+import loginPage from "../pageobjects/login.page";
+import navbar from "../pageobjects/navbar";
 
 describe("Login page", async () => {
     beforeEach(async () => {

@@ -14,11 +14,8 @@
     },
     "scripts": {
         "wdio": "wdio run ./wdio.conf.js",
-        "regression-production": "npx wdio --spec test/specs/**/*.spec.js",
         "login": "npx wdio --suite login",
         "register": "npx wdio --suite register",
-        "product": "npx wdio --suite product",
-        "cart": "npx wdio --suite cart",
         "e2e": "npx wdio --suite e2e"
     },
     "dependencies": {
