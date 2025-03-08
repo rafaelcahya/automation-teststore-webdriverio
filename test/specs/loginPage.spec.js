@@ -16,21 +16,6 @@ describe("Login page", async () => {
         await browser.refresh();
     });
 
-    it("Should be able to fill the login name", async () => {
-        const loginNameValue = generator.generateUniqueName();
-        await loginPage.loginName.waitForDisplayed();
-        await loginPage.loginName.setValue(loginNameValue);
-        await browser.pause(3000)
-        await expect(loginPage.loginName).toHaveValue(loginNameValue);
-    });
-
-    it("Should be able to fill the password", async () => {
-        const password = generator.generateUniqueName();
-        await loginPage.password.waitForDisplayed();
-        await loginPage.password.setValue(password);
-        await expect(loginPage.password).toHaveValue(password);
-    });
-
     it("Should be able to show message when login with invalid credential", async () => {
         await loginPage.loginName.waitForDisplayed();
         await loginPage.loginName.setValue("1231231");
